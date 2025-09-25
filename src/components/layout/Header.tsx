@@ -36,8 +36,8 @@ const Header: React.FC<HeaderProps> = ({ currentView }) => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-white/20 px-6 py-4 shadow-sm">
-      <h2 className="text-xl font-semibold text-gray-800">
+    <header className="bg-white/60 backdrop-blur-md border-b border-white/20 px-6 py-4 shadow-sm dopamine-card">
+      <h2 className="text-xl font-semibold dopamine-text dopamine-pulse">
         {getViewTitle(currentView)}
       </h2>
     </header>

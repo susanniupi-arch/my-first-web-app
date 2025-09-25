@@ -74,20 +74,20 @@ const NotesView: React.FC = () => {
             placeholder="搜索笔记..."
             value={searchTerm}
             onChange={handleSearch}
-            className="w-80"
+            className="w-80 dopamine-card"
           />
         </div>
         
         <MovingBorder
           speed="medium"
-          borderColor="blue"
+          borderColor="rainbow"
           className="inline-block"
         >
           <Button 
             onClick={() => setIsCreateModalOpen(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
+            className="dopamine-button text-white"
           >
-            <span className="mr-2">+</span>
+            <span className="mr-2 dopamine-bounce">📝</span>
             新建笔记
           </Button>
         </MovingBorder>
@@ -95,7 +95,7 @@ const NotesView: React.FC = () => {
 
       {/* 错误提示 */}
       {error && (
-        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+        <div className="mb-4 p-4 dopamine-card border border-red-200 rounded-lg text-red-700">
           {error}
         </div>
       )}
@@ -104,7 +104,7 @@ const NotesView: React.FC = () => {
       <div className="flex-1 overflow-auto">
         {isLoading ? (
           <div className="flex items-center justify-center h-64">
-            <div className="text-gray-500">加载中...</div>
+            <div className="dopamine-text text-2xl dopamine-pulse">✨ 加载中... ✨</div>
           </div>
         ) : (
           <NotesList 
@@ -119,23 +119,25 @@ const NotesView: React.FC = () => {
       <Modal
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
-        title="创建新笔记"
+        title="✨ 创建新笔记 ✨"
         size="sm"
       >
-        <div className="space-y-4">
-          <p className="text-gray-600">选择创建笔记的方式：</p>
+        <div className="space-y-4 dopamine-card p-6 rounded-xl">
+          <p className="dopamine-text text-center text-lg">选择创建笔记的方式：</p>
           <div className="flex space-x-3">
             <Button
               onClick={handleCreateNote}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+              className="flex-1 dopamine-button text-white"
             >
+              <span className="mr-2 dopamine-bounce">📝</span>
               空白笔记
             </Button>
             <Button
               onClick={handleCreateNote}
               variant="secondary"
-              className="flex-1"
+              className="flex-1 dopamine-card hover:dopamine-glow"
             >
+              <span className="mr-2 dopamine-spin">📋</span>
               模板笔记
             </Button>
           </div>

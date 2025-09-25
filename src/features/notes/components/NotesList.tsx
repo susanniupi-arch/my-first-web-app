@@ -38,12 +38,12 @@ const NotesList: React.FC<NotesListProps> = ({ notes, onEditNote, searchTerm }) 
 
   if (notes.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-gray-500">
-        <div className="text-6xl mb-4">📝</div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">
-          {searchTerm ? '没有找到相关笔记' : '还没有笔记'}
+      <div className="flex flex-col items-center justify-center py-12 dopamine-card rounded-2xl mx-4">
+        <div className="text-6xl mb-4 dopamine-bounce">📝</div>
+        <h3 className="text-lg font-medium dopamine-text mb-2 dopamine-pulse">
+          {searchTerm ? '没有找到相关笔记 ✨' : '还没有笔记 🌟'}
         </h3>
-        <p className="text-sm mb-4">
+        <p className="text-sm mb-4 dopamine-text opacity-80">
           {searchTerm ? '尝试使用不同的关键词搜索' : '创建你的第一个笔记开始记录想法'}
         </p>
       </div>
@@ -63,9 +63,9 @@ const NotesList: React.FC<NotesListProps> = ({ notes, onEditNote, searchTerm }) 
           borderGlow={true}
           onClick={() => onEditNote(note)}
         >
-          <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
+          <div className="dopamine-card rounded-lg border border-gray-200 p-4 hover:dopamine-glow transition-all duration-300">
             <div className="flex items-start justify-between mb-3">
-              <h3 className="font-semibold text-gray-800 line-clamp-2 flex-1">
+              <h3 className="font-semibold dopamine-text line-clamp-2 flex-1 dopamine-rainbow">
                 {note.title}
               </h3>
               <div className="flex items-center space-x-1 ml-2">
@@ -84,7 +84,7 @@ const NotesList: React.FC<NotesListProps> = ({ notes, onEditNote, searchTerm }) 
               </div>
             </div>
 
-            <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+            <p className="text-gray-600 text-sm mb-3 line-clamp-3 dopamine-text opacity-80">
               {getPreviewText(note.content)}
             </p>
 
@@ -94,7 +94,7 @@ const NotesList: React.FC<NotesListProps> = ({ notes, onEditNote, searchTerm }) 
                 {note.tags?.slice(0, 2).map((tag: string) => (
                   <span
                     key={tag}
-                    className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full"
+                    className="dopamine-button text-white px-2 py-1 rounded-full text-xs"
                   >
                     {tag}
                   </span>

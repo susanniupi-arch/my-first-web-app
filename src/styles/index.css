@@ -11,7 +11,9 @@ html {
 }
 
 body {
-  background: #0a0a0a !important;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a8edea 75%, #fed6e3 100%) !important;
+  background-size: 400% 400% !important;
+  animation: dopamine-gradient 8s ease infinite !important;
   min-height: 100vh !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -402,6 +404,100 @@ body {
   }
 }
 
+/* 多巴胺风格动画 */
+@keyframes dopamine-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes dopamine-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-15px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  75% {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+
+@keyframes dopamine-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes dopamine-pulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.08);
+    filter: brightness(1.3) saturate(1.5);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes dopamine-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg) scale(1.02);
+  }
+  75% {
+    transform: rotate(-5deg) scale(1.02);
+  }
+}
+
+@keyframes dopamine-rainbow-glow {
+  0% {
+    box-shadow: 
+      0 0 20px rgba(255, 154, 158, 0.6),
+      0 0 40px rgba(254, 207, 239, 0.4),
+      0 0 60px rgba(168, 237, 234, 0.2);
+  }
+  33% {
+    box-shadow: 
+      0 0 20px rgba(254, 207, 239, 0.6),
+      0 0 40px rgba(168, 237, 234, 0.4),
+      0 0 60px rgba(255, 154, 158, 0.2);
+  }
+  66% {
+    box-shadow: 
+      0 0 20px rgba(168, 237, 234, 0.6),
+      0 0 40px rgba(255, 154, 158, 0.4),
+      0 0 60px rgba(254, 207, 239, 0.2);
+  }
+  100% {
+    box-shadow: 
+      0 0 20px rgba(255, 154, 158, 0.6),
+      0 0 40px rgba(254, 207, 239, 0.4),
+      0 0 60px rgba(168, 237, 234, 0.2);
+  }
+}
+
 @layer base {
 
 }
@@ -633,6 +729,86 @@ body {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  /* 多巴胺风格效果类 */
+  .dopamine-bg {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #a8edea 50%, #fed6e3 75%, #ff9a9e 100%);
+    background-size: 400% 400%;
+    animation: dopamine-gradient 6s ease infinite;
+  }
+
+  .dopamine-bounce {
+    animation: dopamine-bounce 2s ease-in-out infinite;
+  }
+
+  .dopamine-spin {
+    animation: dopamine-spin 3s linear infinite;
+  }
+
+  .dopamine-pulse {
+    animation: dopamine-pulse 1.5s ease-in-out infinite;
+  }
+
+  .dopamine-wiggle {
+    animation: dopamine-wiggle 2.5s ease-in-out infinite;
+  }
+
+  .dopamine-glow {
+    animation: dopamine-rainbow-glow 4s ease-in-out infinite;
+  }
+
+  .dopamine-text {
+    background: linear-gradient(45deg, #ff6b9d, #c44569, #6c5ce7, #74b9ff, #00cec9, #ff6b9d);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: dopamine-gradient 3s ease infinite;
+  }
+
+  .dopamine-card {
+    background: linear-gradient(135deg, rgba(255, 154, 158, 0.9) 0%, rgba(254, 207, 239, 0.9) 25%, rgba(168, 237, 234, 0.9) 50%, rgba(254, 214, 227, 0.9) 75%, rgba(255, 154, 158, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
+    animation: dopamine-float 4s ease-in-out infinite;
+  }
+
+  .dopamine-button {
+    background: linear-gradient(45deg, #ff6b9d, #c44569, #6c5ce7);
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: dopamine-gradient 2s ease infinite;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+  }
+
+  .dopamine-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+    animation-duration: 1s;
+  }
+
+  .dopamine-heart {
+    color: #ff6b9d;
+    animation: dopamine-bounce 1s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  .dopamine-rainbow {
+    background: linear-gradient(90deg, 
+      #ff6b9d 0%, #c44569 14%, #6c5ce7 28%, 
+      #74b9ff 42%, #00cec9 56%, #a8edea 70%, 
+      #fed6e3 84%, #ff9a9e 100%);
+    background-size: 200% 100%;
+    animation: rainbow-shift 3s linear infinite;
   }
 
   /* 悬停效果增强 */

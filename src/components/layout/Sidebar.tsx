@@ -13,10 +13,18 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) => {
     { id: 'projects', label: '项目', icon: '📁' },
   ];
 
+  const getDopamineIcon = (icon: string, isActive: boolean) => {
+    if (!isActive) return icon;
+    
+    const animations = ['dopamine-bounce', 'dopamine-spin', 'dopamine-pulse', 'dopamine-wiggle'];
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    return <span className={`${randomAnimation} inline-block`}>{icon}</span>;
+  };
+
   return (
     <div className="w-64 bg-white/80 backdrop-blur-md border-r border-white/20 flex flex-col shadow-lg">
-      <div className="p-6 border-b border-white/20">
-        <h1 className="text-xl font-bold text-gray-800">生产力记事本</h1>
+      <div className="p-6 border-b border-white/20 dopamine-card rounded-t-none">
+        <h1 className="text-xl font-bold dopamine-text dopamine-pulse">✨ 生产力记事本 ✨</h1>
       </div>
       
       <nav className="flex-1 p-4">
@@ -27,12 +35,12 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange }) => {
                 onClick={() => onViewChange(item.id)}
                 className={`w-full flex items-center px-4 py-3 text-left rounded-lg transition-all duration-200 ${
                   currentView === item.id
-                    ? 'bg-white/40 text-blue-700 border border-blue-200/50 shadow-sm backdrop-blur-sm'
-                    : 'text-gray-700 hover:bg-white/30 hover:backdrop-blur-sm'
+                    ? 'dopamine-card text-blue-700 border border-blue-200/50 shadow-sm backdrop-blur-sm dopamine-glow'
+                    : 'text-gray-700 hover:dopamine-card hover:backdrop-blur-sm'
                 }`}
               >
-                <span className="text-lg mr-3">{item.icon}</span>
-                <span className="font-medium">{item.label}</span>
+                <span className="text-lg mr-3">{getDopamineIcon(item.icon, currentView === item.id)}</span>
+                <span className="font-medium dopamine-text">{item.label}</span>
               </button>
             </li>
           ))}
